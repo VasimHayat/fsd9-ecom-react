@@ -15,10 +15,10 @@ const Home = () => {
 
       <div className="container d-flex">
                 <div className="col-md-6 p-3"> 
-                  <img src='https://new-ella-demo.myshopify.com/cdn/shop/files/home-20-banner-custom-1-3-1_510x.jpg?v=1646358275'/> 
+                  <img src='https://new-ella-demo.myshopify.com/cdn/shop/files/home-20-banner-custom-1-3-1_510x.jpg?v=1646358275' alt=''/> 
                 </div>
                 <div className="col-md-6 p-3">  
-                   <img src='https://new-ella-demo.myshopify.com/cdn/shop/files/home-20-banner-custom-1-3-2_510x.jpg?v=1646358278'/>
+                   <img src='https://new-ella-demo.myshopify.com/cdn/shop/files/home-20-banner-custom-1-3-2_510x.jpg?v=1646358278' alt=''/>
                 </div>
          </div>
 

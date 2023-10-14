@@ -1,9 +1,12 @@
  
+import { useContext } from 'react';
 import styles from './Navbar.module.css'; 
+import { userContext } from '../../contexts/UserProvider';
 
 const Navbar = () => {
-  
+  const { user ,isLoggedIn} = useContext(userContext); 
 
+  console.log(user)
 
   return (
     
@@ -36,26 +39,40 @@ const Navbar = () => {
           <ul className="navbar-nav mb-2 mb-lg-0 ms-auto">
             <li className="nav-item">
               <a className={`${styles.a_nav_link} nav-link`} aria-current="page" href="/seller">
-                <img className={styles.padding_5} src='https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/Store-9eeae2.svg' />
+                <img className={styles.padding_5} src='https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/Store-9eeae2.svg'  alt=''/>
                 Become a Seller</a>
             </li>
 
-            <li className="nav-item dropdown">
+            {
+             isLoggedIn?(<>
 
-              <a className={`${styles.a_nav_link} nav-link dropdown-toggle`} href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img className={styles.padding_5} src='https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/profile-815786.svg' />
-                Sign In
-              </a>
-              <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#">My Profile</a></li>
-                <li><a className="dropdown-item" href="#">Orders</a></li>
-                <li><hr className="dropdown-divider" /></li>
-                <li><a className="dropdown-item" href="#">Wishlist</a></li>
-              </ul>
-            </li>
+                    <li className="nav-item dropdown">
+
+                    <a className={`${styles.a_nav_link} nav-link dropdown-toggle`} href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img className={styles.padding_5} src='https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/profile-815786.svg' alt='' />
+                       {user.firstName}
+                    </a>
+                    <ul className="dropdown-menu">
+                      <li><a className="dropdown-item" href="#">My Profile</a></li>
+                      <li><a  className="dropdown-item" href="#">Orders</a></li>
+                      <li><hr className="dropdown-divider" /></li>
+                      <li><a className="dropdown-item" href="#">Wishlist</a></li>
+                    </ul>
+                    </li>
+                </>):(
+                 <>
+                    <li className="nav-item">
+                      <a className={`${styles.a_nav_link} nav-link`} aria-current="page" href="/seller">
+                      <img className={styles.padding_5} src='https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/profile-815786.svg' alt='' />
+                      Sign In </a>
+                    </li>
+                </>
+            )
+}
+          
             <li className="nav-item">
               <a className={`${styles.a_nav_link} nav-link`}>
-                <img className={styles.padding_5} src='https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg' />
+                <img className={styles.padding_5} src='https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg' alt='' />
                 Cart</a>
             </li>
           </ul>

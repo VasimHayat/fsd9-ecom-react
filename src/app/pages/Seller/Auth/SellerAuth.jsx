@@ -3,8 +3,8 @@ import {useState } from 'react';
 import BaseLogin from '../BaseLogin/BaseLogin';
  
 
-function Login() {
-  const [isSeller, setIsSeller] = useState(false);
+function SellerLogin() {
+  const [isSeller, setIsSeller] = useState(true);
    
   return (
     <>
@@ -14,4 +14,4 @@ function Login() {
 }
  
 
-export default Login;
+export default SellerLogin;
