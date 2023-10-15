@@ -18,6 +18,7 @@ import { postApiForLogin } from "../../../Api/HttpApi";
 import { userContext } from '../../../contexts/UserProvider';
 import UserService from '../../../services/UserService';
 import { useNavigate } from 'react-router-dom';
+import { sellerContext } from '../../../contexts/SellerProvider';
 
 function Copyright(props) {
   return (
@@ -39,6 +40,7 @@ function BaseLogin({isSeller}) {
   const [severity, setSeverity] = useState('success');
   const [authMsg, setAuthMsg] = useState('');
   const { setUser, setIsLoggedIn } = useContext(userContext);
+  const { setSeller, setIsSellerLoggedIn } = useContext(sellerContext);
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -52,6 +54,25 @@ function BaseLogin({isSeller}) {
     setOpen(false);
   };
 
+  const postAuthRedirection = (response)=>{
+    if(isSeller){
+      setIsSellerLoggedIn(true);
+      setSeller(response.data);
+      UserService.setSellerLogin(response.data);
+    }else{
+      setIsLoggedIn(true);
+      setUser(response.data);
+      UserService.setUserLogin(response.data);
+    }
+   
+    setAuthMsg('Login Successfully!!');
+    setOpen(true);
+    setSeverity('success');
+    setTimeout(() => {
+      navigate(isSeller?`../../seller/user/${response.data.id}`:'/');
+    })
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const _formData = new FormData(event.currentTarget);
@@ -64,15 +85,16 @@ function BaseLogin({isSeller}) {
       })
     )
       .then(response => {
-        setIsLoggedIn(true);
-        setUser(response.data);
-        UserService.setUserLogin(response.data);
-        setAuthMsg('Login Successfully!!');
-        setOpen(true);
-        setSeverity('success');
-        setTimeout(() => {
-          navigate('/');
-        })
+        postAuthRedirection(response);
+        // setIsLoggedIn(true);
+        // setUser(response.data);
+        // UserService.setUserLogin(response.data);
+        // setAuthMsg('Login Successfully!!');
+        // setOpen(true);
+        // setSeverity('success');
+        // setTimeout(() => {
+        //   navigate('/');
+        // })
       })
       .catch(error => {
         let msg = error.message;

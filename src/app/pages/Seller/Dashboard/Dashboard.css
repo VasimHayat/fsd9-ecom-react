@@ -1,0 +1,8 @@
+ul.pagination >li {
+    padding: 10px;
+    border: 1px solid lightblue;
+}
+.td-width{
+    height: 20px ;
+    overflow: hidden;
+}

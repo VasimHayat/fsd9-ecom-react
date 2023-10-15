@@ -38,7 +38,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mb-2 mb-lg-0 ms-auto">
             <li className="nav-item">
-              <a className={`${styles.a_nav_link} nav-link`} aria-current="page" href="/seller">
+              <a className={`${styles.a_nav_link} nav-link`} aria-current="page" href="/seller/auth">
                 <img className={styles.padding_5} src='https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/Store-9eeae2.svg'  alt=''/>
                 Become a Seller</a>
             </li>
@@ -62,7 +62,7 @@ const Navbar = () => {
                 </>):(
                  <>
                     <li className="nav-item">
-                      <a className={`${styles.a_nav_link} nav-link`} aria-current="page" href="/seller">
+                      <a className={`${styles.a_nav_link} nav-link`} aria-current="page" href="/login">
                       <img className={styles.padding_5} src='https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/profile-815786.svg' alt='' />
                       Sign In </a>
                     </li>

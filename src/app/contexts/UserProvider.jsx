@@ -1,5 +1,6 @@
  
 import { createContext, useEffect, useState } from "react"; 
+import UserService from "../services/UserService";
 
 export const userContext = createContext();
 
@@ -8,9 +9,12 @@ function UserProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(null); 
  
 
-  useEffect(() => {
-    const token = localStorage.getItem("userToken");
-    if (token) setUser({ token: token });
+  useEffect(() => { 
+    const userDetail = UserService.getUserLogin();
+    if (userDetail) {
+      setUser(userDetail)
+      setIsLoggedIn(true);
+    };
   }, []);
 
   return (

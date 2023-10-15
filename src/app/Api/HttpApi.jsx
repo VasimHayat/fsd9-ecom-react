@@ -30,13 +30,24 @@ export const fetchAllProduct = async () => {
 
 export const fetchProductByCategory = async (catgId) => {
     try {
-        const response = await axios.get(`${BASE_URL}${API_URLS.PRODUCTS_BU_CATEGORY}/${catgId}`);
+        const response = await axios.get(`${BASE_URL}${API_URLS.PRODUCTS_BY_CATEGORY}/${catgId}`);
         return response.data;
         
     } catch (error) {
         console.log(error.message);
     }
 } 
+
+export const fetchProductBySeller = async (id) => {
+    try {
+        const response = await axios.get(`${BASE_URL}${API_URLS.PRODUCTS_BY_SELLER}/${id}`);
+        return response.data;
+        
+    } catch (error) {
+        console.log(error.message);
+    }
+} 
+
 
 export const fetchProductDetail = async (prodId) => {
     try {

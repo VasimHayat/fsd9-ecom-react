@@ -1,9 +1,9 @@
 
-import {useState } from 'react'; 
-import BaseLogin from '../BaseLogin/BaseLogin';
+import {useState } from 'react';  
+import BaseLogin from '../../Authentication/BaseLogin/BaseLogin';
  
 
-function SellerLogin() {
+const  SellerLogin = ()=> {
   const [isSeller, setIsSeller] = useState(true);
    
   return (

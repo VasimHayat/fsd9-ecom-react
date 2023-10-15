@@ -1,6 +1,7 @@
 import LocalStorageService from "./LocalStorageService";
 
 const USER_KEY="FSD_USER";
+const SELLER_KEY="FSD_SELLER";
 const UserService = {
 
     setUserLogin:(user)=>{
@@ -8,6 +9,12 @@ const UserService = {
     },
     getUserLogin:()=>{
         LocalStorageService.getItem(USER_KEY);
+    },
+    setSellerLogin:(user)=>{
+        LocalStorageService.setItem(SELLER_KEY,user);
+    },
+    getSellerLogin:()=>{
+        LocalStorageService.getItem(SELLER_KEY);
     }
 };
  

@@ -6,7 +6,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import reportWebVitals from "./reportWebVitals";
 
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotFoundPage from "./app/pages/NotFound/NotFoundPage";
 import Home from "./app/pages/Home/Home";
 import App from "./App";
@@ -21,6 +21,8 @@ import ProductDetail from "./app/pages/ProductsLayout/ProductDetail/ProductDetai
 import UserProvider from "./app/contexts/UserProvider";
 import SellerLayout from "./app/pages/Seller/SellerLayout";
 import Dashboard from "./app/pages/Seller/Dashboard/Dashboard";
+import SellerProvider from "./app/contexts/SellerProvider";
+import SellerLogin from "./app/pages/Seller/Auth/SellerAuth";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +51,12 @@ const router = createBrowserRouter([
       // { path: "forgot-password", element: <ForgotPassword /> },
        {
         path: "seller", element: <SellerLayout />, children: [ 
-          { path: ":id", element: <Dashboard /> },
+          { path: "auth", element: <SellerLogin /> },
+          { path: "user", element: <SellerLayout /> ,
+           children:[
+            { path: ":id", element: <Dashboard /> },
+           ]
+        },
         ]
       },
       { path: "dashboard", element: <Dashboard /> },
@@ -75,7 +82,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <UserProvider>
-      <RouterProvider router={router} />
+      <SellerProvider>
+        <RouterProvider router={router} />
+      </SellerProvider>
     </UserProvider>
   </React.StrictMode>
 );

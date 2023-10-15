@@ -23,11 +23,12 @@ const style = {
     p: 4,
   };
 
-const UpdateProduct = ({open,setOpen}) => { 
+const UpdateProduct = ({open,setOpen,setCurrentProduct,  currentProduct}) => { 
     const handleClose = () => {
         setOpen(false);
     };
 
+    console.log(currentProduct)
     const [age, setAge] = useState("");
 
     const handleChange = (event) => {
