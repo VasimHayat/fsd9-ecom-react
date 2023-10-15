@@ -17,10 +17,10 @@ const Navbar = () => {
         <div className="d-flex me-auto">
           <a className="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="FSD9">
             <img
-              src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/flipkart-095e08.svg"
-              width="130"
-              height="22"
-              alt="Flipkart Logo"
+              src="https://cdnhubworks.s3.us-west-1.amazonaws.com/hwtest/201805301649/temp/logo3.PNG"
+              
+              height="43"
+              alt="FSD09"
             />
           </a>
           <form className="d-flex me-auto" role="search">

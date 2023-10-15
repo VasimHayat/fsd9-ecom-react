@@ -67,15 +67,15 @@ const UpdateProduct = ({open,setOpen,setCurrentProduct,  currentProduct}) => {
                   fontWeight: 700
                 }}
               >
-                Title
+                Name
               </InputLabel>
             </Grid>
             <Grid item xs={12} sm={10}>
               <TextField
                 required
                 id="title"
-                name="title"
-                label="Title"
+                name="name"
+                label="Name"
                 fullWidth
                 size="small"
                 autoComplete="off"
@@ -90,13 +90,13 @@ const UpdateProduct = ({open,setOpen,setCurrentProduct,  currentProduct}) => {
                   fontWeight: 700
                 }}
               >
-                Content
+                Description
               </InputLabel>
             </Grid>
             <Grid item xs={12} sm={10}>
               <TextField
                 id="outlined-multiline-static"
-                label="Content"
+                label="Description"
                 multiline
                 fullWidth
                 rows={4}
@@ -110,7 +110,7 @@ const UpdateProduct = ({open,setOpen,setCurrentProduct,  currentProduct}) => {
                   fontWeight: 700
                 }}
               >
-                URL
+                Image Url
               </InputLabel>
             </Grid>
             <Grid item xs={12} sm={10}>
@@ -118,7 +118,7 @@ const UpdateProduct = ({open,setOpen,setCurrentProduct,  currentProduct}) => {
                 required
                 id="url"
                 name="url"
-                label="URL"
+                label="Image"
                 fullWidth
                 size="small"
                 autoComplete="off"
@@ -143,7 +143,7 @@ const UpdateProduct = ({open,setOpen,setCurrentProduct,  currentProduct}) => {
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   value={age}
-                  label="Age"
+                  label="Category"
                   onChange={handleChange}
                 >
                   {categories.map((item) => (
@@ -160,7 +160,7 @@ const UpdateProduct = ({open,setOpen,setCurrentProduct,  currentProduct}) => {
                   fontWeight: 700
                 }}
               >
-                Author
+                Price
               </InputLabel>
             </Grid>
             <Grid item xs={12} sm={4}>
@@ -168,7 +168,7 @@ const UpdateProduct = ({open,setOpen,setCurrentProduct,  currentProduct}) => {
                 required
                 id="author"
                 name="author"
-                label="Author"
+                label="Price"
                 fullWidth
                 size="small"
                 autoComplete="off"
@@ -207,3 +207,6 @@ const UpdateProduct = ({open,setOpen,setCurrentProduct,  currentProduct}) => {
 }
 
 export default UpdateProduct;
+
+
+ 
