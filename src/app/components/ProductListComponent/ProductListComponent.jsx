@@ -10,7 +10,7 @@ const ProductListComponent = () => {
         const fetchData = async () => {
             try {
                 const _data = await fetchAllProduct();
-                setProductList(_data);
+                setProductList([..._data]);
             } catch (error) {
                 console.log(error)
             }
@@ -21,19 +21,18 @@ const ProductListComponent = () => {
 
 
     return (
-        <>
-            <div className="home-products">
+        <div className="home-products">
 
-                {productList ? (
-                    <>
-                      <div className="row row-cols-1 row-cols-md-6 g-6">
-                        {productList.slice(0, 12).map(product => (
-                            <>
-                              <ProductComponent  product={product}   key={product._id}>
+            {productList?.length != 0 ? (
+                <>
+                    <div className="row row-cols-1 row-cols-md-6 g-6">
+                        {productList?.slice(0, 12).map(product => (
+                            // <>
+                                <ProductComponent product={product} key={product._id}>
 
-                              </ProductComponent>
+                                </ProductComponent>
 
-                                    {/* <div className="col p-2"  key={product.id}>
+                                /* <div className="col p-2"  key={product.id}>
                                         <div className="card h-100">
                                            <div className='product-img-box'> <img src={product.imgUrl} style={{height:'200px',maxWidth:'200px'}} className="card-img-top" alt="..." /></div>
                                             <div className="card-body">
@@ -46,25 +45,17 @@ const ProductListComponent = () => {
                                                 <small className="fw-bold">Price : ₹ {product.price} </small>
                                             </div>
                                         </div>
-                                    </div>  */}
-                            </>
+                                    </div>  */
+                            // </>
                         ))}
-                        </div>
-                    </>
-                ) : (
-                    <>Loading...</>
-                )}
-
-
-                {/* <div className="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                    <div className="my-3 p-3">
-                        <h2 className="display-5">Another headline</h2>
-                        <p className="lead">And an even wittier subheading.</p>
                     </div>
-                    <div className="bg-dark shadow-sm mx-auto" style={{ width: '80%', height: '300px', borderRadius: '21px 21px 0 0' }}></div>
-                </div> */}
-            </div>
-        </>
+                </>
+            ) : (
+                <center>
+                    <h1>Loading...</h1>
+                </center>
+            )}
+        </div>
     );
 }
 

@@ -16,7 +16,8 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
-import { postApiForRegistration } from '../../../Api/HttpApi';
+import { postApiForLogin, postApiForRegistration } from '../../../Api/HttpApi';
+import { redirect } from 'react-router-dom';
 
 
 function Copyright(props) {
@@ -65,7 +66,17 @@ export default function Registration() {
     .then(response => {
         setOpen(true);
         setSeverity('success')
-         console.log(response)
+        postApiForLogin(
+          JSON.stringify({
+            username: _formData.get('email'),
+            password: _formData.get('password'),
+          })
+        )
+        return redirect("/")
+
+
+
+      
     })
     .catch(error => {
         console.log(error.response.data.message);

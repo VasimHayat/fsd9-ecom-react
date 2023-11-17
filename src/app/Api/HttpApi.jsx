@@ -31,6 +31,7 @@ export const fetchAllProduct = async () => {
 export const fetchProductByCategory = async (catgId) => {
     try {
         const response = await axios.get(`${BASE_URL}${API_URLS.PRODUCTS_BY_CATEGORY}/${catgId}`);
+        console.log(response.data)
         return response.data;
         
     } catch (error) {
