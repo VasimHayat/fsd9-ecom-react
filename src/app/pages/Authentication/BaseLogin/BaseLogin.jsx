@@ -43,13 +43,6 @@ function BaseLogin({isSeller}) {
   const { setSeller, setIsSellerLoggedIn } = useContext(sellerContext);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (actionData?.status === "success") {
-
-  //     localStorage.setItem("userToken", actionData.data.token);
-  //   }
-  // }, [actionData?.status, actionData?.data, navigate]);
-
   const handleClose = (event, reason) => {
     setOpen(false);
   };

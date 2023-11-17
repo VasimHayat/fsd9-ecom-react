@@ -5,17 +5,23 @@ const SELLER_KEY="FSD_SELLER";
 const UserService = {
 
     setUserLogin:(user)=>{
-        LocalStorageService.setItem(USER_KEY,user);
+        return LocalStorageService.setItem(USER_KEY,user);
     },
     getUserLogin:()=>{
-        LocalStorageService.getItem(USER_KEY);
+        return LocalStorageService.getItem(USER_KEY);
+    },
+    deleteUserLogin: ()=>{
+        return LocalStorageService.removeItem(USER_KEY);
     },
     setSellerLogin:(user)=>{
-        LocalStorageService.setItem(SELLER_KEY,user);
+        return LocalStorageService.setItem(SELLER_KEY,user);
     },
     getSellerLogin:()=>{
-        LocalStorageService.getItem(SELLER_KEY);
-    }
+        return LocalStorageService.getItem(SELLER_KEY);
+    },
+    deleteSellerLogin: ()=>{
+        return LocalStorageService.removeItem(SELLER_KEY);
+    },
 };
  
 

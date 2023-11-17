@@ -6,12 +6,8 @@ function App() {
   const { state } = useNavigation();
   return (
     <>
-    <Navbar></Navbar>
-     <Outlet />
-    {/* <main style={{ marginBlock: "60px", flexGrow: 1, position: "relative" }}>
-                    {state === "loading"}
-                   
-      </main> */}
+      <Navbar></Navbar>
+      <Outlet />
     </>
   );
 }
