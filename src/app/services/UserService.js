@@ -8,13 +8,13 @@ const UserService = {
         LocalStorageService.setItem(USER_KEY,user);
     },
     getUserLogin:()=>{
-        LocalStorageService.getItem(USER_KEY);
+        return LocalStorageService.getItem(USER_KEY);
     },
     setSellerLogin:(user)=>{
         LocalStorageService.setItem(SELLER_KEY,user);
     },
     getSellerLogin:()=>{
-        LocalStorageService.getItem(SELLER_KEY);
+        return LocalStorageService.getItem(SELLER_KEY);
     }
 };
  

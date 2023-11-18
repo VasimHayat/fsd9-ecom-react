@@ -1,12 +1,13 @@
  
 import { useContext } from 'react';
 import styles from './Navbar.module.css'; 
-import { userContext } from '../../contexts/UserProvider';
+import { userContext } from '../../contexts/UserProvider'; 
+import { useCart } from '../../contexts/CartProvider';
 
 const Navbar = () => {
   const { user ,isLoggedIn} = useContext(userContext); 
-
-  console.log(user)
+  const { numOfCartItem} = useCart(); 
+ 
 
   return (
     
@@ -73,7 +74,7 @@ const Navbar = () => {
             <li className="nav-item">
               <a className={`${styles.a_nav_link} nav-link`}>
                 <img className={styles.padding_5} src='https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg' alt='' />
-                Cart</a>
+                Cart({numOfCartItem})</a>
             </li>
           </ul>
         </div>
