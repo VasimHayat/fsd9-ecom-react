@@ -5,20 +5,20 @@ import './ProductDetail.css';
 import { Breadcrumbs, Rating, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useCart } from "../../../contexts/CartProvider"; 
+import CartService from "../../../services/CartService";
+import ProductItemQnt from "./ProductItemQnt/ProductItemQnt";
 
 const ProductDetail = () => {
 
     let { id } = useParams();
     const [product, setProduct] = useState([]);
     const [dataLoaded, setDataLoaded] = useState(false);
+    const [qnt, setQnt] = useState(0); 
 
-   
-
-const { addItemToCart, removeItemFromCart, getCartItems } = useCart();
+  const { addItemToCart, removeItemFromCart, getCartItems } = useCart();
 
   const handleAddItem = () => {
-    const payLoad = {eoProductItemPK: product.id, qnt:1  }; 
-    console.log("CALLLLLLLllll")
+    const payLoad = {eoProductItemPK: product.id, qnt:1  };  
     addItemToCart(payLoad);
   
   };
@@ -34,6 +34,8 @@ const { addItemToCart, removeItemFromCart, getCartItems } = useCart();
         const fetchData = async () => {
             try {
                 const _data = await fetchProductDetail(id);
+                console.log(CartService.getCartItemQnt(id))
+                setQnt(CartService.getCartItemQnt(id));
                 setProduct(_data);
                 setDataLoaded(true);
                 console.log(_data)
@@ -44,6 +46,14 @@ const { addItemToCart, removeItemFromCart, getCartItems } = useCart();
         fetchData();
     }, [id]);
 
+
+    const handleQuantityChange = newQuantity => {
+        const payLoad = {eoProductItemPK: product.id, qnt:newQuantity  };  
+        addItemToCart(payLoad); 
+        setQnt(newQuantity);
+        
+      };
+    
 
     return (
         <>
@@ -68,7 +78,14 @@ const { addItemToCart, removeItemFromCart, getCartItems } = useCart();
                                 <img src={product.imgUrl} className="product_imgUrl d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" loading="lazy" />
                                     <div className="d-grid gap-2 d-md-flex py-4 justify-content-md-center">
                                         <button type="button" className="btn  btn-outline-secondary  btn-lg px-4 me-md-2">Add To wishlisth</button>
-                                        <button type="button" className="btn btn-primary btn-lg px-4" onClick={handleAddItem}>Add To Cart</button>
+                                        
+                                           {qnt>0?(
+                                             <ProductItemQnt initialQuantity={qnt} onQuantityChange={handleQuantityChange} />
+                                           ):(
+                                            <button type="button" className="btn btn-primary btn-lg px-4" onClick={handleAddItem}></button>
+                                           )}
+                                            
+                                             
                                     </div>
                                 </div>
                             </div>

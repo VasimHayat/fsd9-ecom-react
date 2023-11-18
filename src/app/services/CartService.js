@@ -38,11 +38,25 @@ const CartService = {
     },
     updateCart:(cart)=>{
         LocalStorageService.setItem(FSD_CART,cart);
-    },
-    
+    },    
     
     getCartDetail:()=>{
        return LocalStorageService.getItem(FSD_CART);        
+    },
+
+    getCartItemQnt:(itemId)=>{
+        const cartDetail =  LocalStorageService.getItem(FSD_CART);
+        itemId = parseInt(itemId);
+        if(cartDetail == null){
+            return 0;
+        }
+        for(let i =0;i<cartDetail.eoCartItemArray.length;i++){
+            if(cartDetail.eoCartItemArray[i].productId === itemId){
+                return cartDetail.eoCartItemArray[i].quantity;
+            }else if( i+1 === cartDetail.eoCartItemArray){
+                return 0;
+            }
+        }
     }
 };
  
