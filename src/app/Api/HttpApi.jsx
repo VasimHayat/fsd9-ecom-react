@@ -67,3 +67,16 @@ export const postApiForRegistration = (payload) => {
 export const postApiForLogin = (payload) => {
     return axios.post(`${BASE_URL}${API_URLS.LOGIN}`, payload, DEFAULT_CONFIG);
 }
+
+export const postApiAddCartItem = (payload) => {
+    return axios.post(`${BASE_URL}${API_URLS.CART_ADD}`, payload, DEFAULT_CONFIG);
+}
+
+export const postApiUpdateCartItem = (payload) => {
+    return axios.post(`${BASE_URL}${API_URLS.CART_UPDATE}`, payload, DEFAULT_CONFIG);
+}
+
+export const postApiDeleteCartItem = (payload) => {
+    return axios.post(`${BASE_URL}${API_URLS.CART_DELETE}`, payload, DEFAULT_CONFIG);
+}
+

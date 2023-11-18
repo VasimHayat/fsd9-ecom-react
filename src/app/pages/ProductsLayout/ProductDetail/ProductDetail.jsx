@@ -4,12 +4,32 @@ import { fetchProductDetail } from "../../../Api/HttpApi";
 import './ProductDetail.css';
 import { Breadcrumbs, Rating, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useCart } from "../../../contexts/CartProvider"; 
 
 const ProductDetail = () => {
 
     let { id } = useParams();
     const [product, setProduct] = useState([]);
     const [dataLoaded, setDataLoaded] = useState(false);
+
+   
+
+const { addItemToCart, removeItemFromCart, getCartItems } = useCart();
+
+  const handleAddItem = () => {
+    const payLoad = {eoProductItemPK: product.id, qnt:1  }; 
+    console.log("CALLLLLLLllll")
+    addItemToCart(payLoad);
+  
+  };
+
+//   const handleRemoveItem = () => {
+//     const itemToRemove = { id: product.id, name: product.name, price: product.price };
+//     removeItemFromCart(itemToRemove);
+//   };
+
+
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -35,8 +55,8 @@ const ProductDetail = () => {
                                 <div className="col-3 col-lg-3 col-sm-6"> 
                                 <div className="card">
                                     <ul className="list-group list-group-flush">
-                                    {product.eoProductImgArray.map(_img => (
-                                        <li className="list-group-item"> 
+                                    {product.eoProductImgArray.map((_img, index) => (
+                                        <li  key={index} className="list-group-item"> 
                                         <img src={_img.imgUrl} className="product-image" alt="ProductImage"></img>
                                         </li> 
                                     ))}
@@ -48,7 +68,7 @@ const ProductDetail = () => {
                                 <img src={product.imgUrl} className="product_imgUrl d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" loading="lazy" />
                                     <div className="d-grid gap-2 d-md-flex py-4 justify-content-md-center">
                                         <button type="button" className="btn  btn-outline-secondary  btn-lg px-4 me-md-2">Add To wishlisth</button>
-                                        <button type="button" className="btn btn-primary btn-lg px-4">Add To Cart</button>
+                                        <button type="button" className="btn btn-primary btn-lg px-4" onClick={handleAddItem}>Add To Cart</button>
                                     </div>
                                 </div>
                             </div>

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import 'react-toastify/dist/ReactToastify.css';
 
 import reportWebVitals from "./reportWebVitals";
 
@@ -23,6 +24,8 @@ import SellerLayout from "./app/pages/Seller/SellerLayout";
 import Dashboard from "./app/pages/Seller/Dashboard/Dashboard";
 import SellerProvider from "./app/contexts/SellerProvider";
 import SellerLogin from "./app/pages/Seller/Auth/SellerAuth";
+import { CartProvider } from "./app/contexts/CartProvider";
+import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
   {
@@ -81,11 +84,14 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <CartProvider>
     <UserProvider>
       <SellerProvider>
         <RouterProvider router={router} />
       </SellerProvider>
     </UserProvider>
+    </CartProvider>
+    <ToastContainer />
   </React.StrictMode>
 );
 

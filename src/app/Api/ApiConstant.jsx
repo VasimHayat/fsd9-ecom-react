@@ -5,4 +5,7 @@ export const API_URLS = {
     LOGIN:'auth/login',
     PRODUCTS_BY_CATEGORY:'products/category',
     PRODUCTS_BY_SELLER:'products/seller', 
+    CART_ADD:"cart/add",
+    CART_UPDATE:"cart/update",
+    CART_DELETE:"cart/delete"
 }
