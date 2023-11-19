@@ -2,12 +2,14 @@
 import { useContext } from 'react';
 import styles from './Navbar.module.css'; 
 import { userContext } from '../../contexts/UserProvider'; 
-import { useCart } from '../../contexts/CartProvider';
+import { useCart } from '../../contexts/CartProvider'; 
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const { user ,isLoggedIn} = useContext(userContext); 
-  const { numOfCartItem} = useCart(); 
- 
+  const { numOfCartItem} = useCart();  
+
+  
 
   return (
     
@@ -55,7 +57,10 @@ const Navbar = () => {
                     </a>
                     <ul className="dropdown-menu">
                       <li><a className="dropdown-item" href="#">My Profile</a></li>
-                      <li><a  className="dropdown-item" href="#">Orders</a></li>
+                      {/* <li><a  className="dropdown-item" href="/orders/{user.id}">Orders</a></li> */}
+                      <Link className="dropdown-item" to={`/orders/${user.id}`}>
+        Orders
+      </Link>
                       <li><hr className="dropdown-divider" /></li>
                       <li><a className="dropdown-item" href="#">Wishlist</a></li>
                     </ul>
@@ -72,7 +77,7 @@ const Navbar = () => {
 }
           
             <li className="nav-item">
-              <a className={`${styles.a_nav_link} nav-link`}>
+              <a className={`${styles.a_nav_link} nav-link`} href="/checkout">
                 <img className={styles.padding_5} src='https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg' alt='' />
                 Cart({numOfCartItem})</a>
             </li>

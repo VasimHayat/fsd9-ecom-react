@@ -20,6 +20,9 @@ const ProductDetail = () => {
   const handleAddItem = () => {
     const payLoad = {eoProductItemPK: product.id, qnt:1  };  
     addItemToCart(payLoad);
+    // setTimeout(()=>{
+    //     window.location.href='/checkout';
+    //   },1000)
   
   };
 
@@ -82,7 +85,7 @@ const ProductDetail = () => {
                                            {qnt>0?(
                                              <ProductItemQnt initialQuantity={qnt} onQuantityChange={handleQuantityChange} />
                                            ):(
-                                            <button type="button" className="btn btn-primary btn-lg px-4" onClick={handleAddItem}></button>
+                                            <button type="button" className="btn btn-primary btn-lg px-4" onClick={handleAddItem}>Add Item</button>
                                            )}
                                             
                                              

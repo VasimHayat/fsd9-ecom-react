@@ -25,7 +25,9 @@ import Dashboard from "./app/pages/Seller/Dashboard/Dashboard";
 import SellerProvider from "./app/contexts/SellerProvider";
 import SellerLogin from "./app/pages/Seller/Auth/SellerAuth";
 import { CartProvider } from "./app/contexts/CartProvider";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify"; 
+import CheckoutPage from "./app/pages/Checkout/CheckoutPage";
+import UserOrders from "./app/pages/Orders/UserOrders";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +35,15 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
     children: [
       { index: true, element: <Home /> },
+      { path: "checkout", element: <CheckoutPage /> },
+      {
+        path: "orders",
+        element: <CategoriesLayout />,
+        children: [ 
+          { path: ":id", element: <UserOrders /> },
+        ],
+      },
+      
       {
         path: "products",
         element: <ProductsLayout />,
@@ -63,6 +74,7 @@ const router = createBrowserRouter([
         ]
       },
       { path: "dashboard", element: <Dashboard /> },
+     
       { path: "*", element: <NotFoundPage /> },
     ],
   },

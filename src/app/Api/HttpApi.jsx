@@ -80,3 +80,16 @@ export const postApiDeleteCartItem = (payload) => {
     return axios.post(`${BASE_URL}${API_URLS.CART_DELETE}`, payload, DEFAULT_CONFIG);
 }
 
+export const postApiCartDetail = (payload) => {
+    return axios.post(`${BASE_URL}${API_URLS.CART_DETAIL}`, payload, DEFAULT_CONFIG);
+}
+
+export const postApiCartCheckout = (payload) => {
+    return axios.post(`${BASE_URL}${API_URLS.CART_CHECKOUT}`, payload, DEFAULT_CONFIG);
+}
+
+export const postApiUserOrders = (payload) => {
+    return axios.post(`${BASE_URL}${API_URLS.USER_ORDERS}`, payload, DEFAULT_CONFIG);
+}
+
+

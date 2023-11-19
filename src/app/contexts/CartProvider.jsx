@@ -21,6 +21,8 @@ export const CartProvider = ({ children }) => {
       CartService.addCartItem(payload,setCartDetail);
   };
 
+  
+
   const removeItemFromCart = (item) => {
    
   };

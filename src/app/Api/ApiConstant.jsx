@@ -7,5 +7,8 @@ export const API_URLS = {
     PRODUCTS_BY_SELLER:'products/seller', 
     CART_ADD:"cart/add",
     CART_UPDATE:"cart/update",
-    CART_DELETE:"cart/delete"
+    CART_DELETE:"cart/delete",
+    CART_DETAIL:'cart/detail',
+    CART_CHECKOUT:'cart/checkout',
+    USER_ORDERS:'order/all'
 }
